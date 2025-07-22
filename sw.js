@@ -5,7 +5,7 @@ const urlsToCache = [
   '/styles/main.css',
   '/scripts/main.js',
   '/images/IMG_20250716_222622_(192_x_192_ピクセル).jpg',
-  '/images/icon-512.png'
+  '/images/IMG_20250716_222716_(512_x_512_ピクセル).jpg'
 ];
 
 // インストールイベント
