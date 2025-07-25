@@ -1,940 +1,948 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Venice Travel Guide - Discover 12 Top Attractions">
-  <meta name="theme-color" content="#0a2a4a">
-  <title>Venice Travel Guide</title>
-  <link rel="manifest" href="manifest.json">
-  <style>
-    :root {
-      /* ライトモード用変数 - ベネチアカラー */
-      --primary-color: #0a2a4a;    /* アドリア海の深い青 */
-      --secondary-color: #d4af37;  /* ベネチアのゴールド */
-      --accent-color: #c45e3f;     /* テラコッタ色 */
-      --background-color: #f5f7fa;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --text-secondary: #666666;
-      --header-bg: rgba(10, 42, 74, 0.95);
-      --footer-bg: rgba(10, 42, 74, 0.95);
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#121212">
+    <title>Tokyo Travel Guide - Discover the Best of Tokyo</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* スタイルは変更ありません（元のCSSをそのまま保持） */
+        :root {
+            --primary-color: #e53935;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --dark-text: #f5f5f5;
+            --light-bg: #f5f5f5;
+            --light-card: #ffffff;
+            --light-text: #333333;
+            --shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
 
-    .dark-mode {
-      /* ダークモード用変数 */
-      --primary-color: #1e3a5f;
-      --secondary-color: #e5c158;
-      --accent-color: #d67a5d;
-      --background-color: #1a202c;
-      --card-bg: #2d3748;
-      --text-color: #e2e8f0;
-      --text-secondary: #a0aec0;
-      --header-bg: rgba(26, 32, 44, 0.95);
-      --footer-bg: rgba(26, 32, 44, 0.95);
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding-top: 80px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      transition: var(--transition);
-      line-height: 1.6;
-      min-height: 100vh;
-      position: relative;
-    }
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
 
-    /* ヘッダースタイル */
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      transition: var(--transition);
-    }
+        /* ヘッダー */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: var(--shadow);
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        body.light-mode header {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
 
-    .logo h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(90deg, #d4af37, #c45e3f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
 
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #d4af37, #c45e3f);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-    }
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
 
-    .controls {
-      display: flex;
-      gap: 12px;
-    }
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
 
-    .btn {
-      background: var(--secondary-color);
-      color: var(--primary-color);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      box-shadow: var(--shadow);
-    }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: var(--shadow);
+        }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
+        body.light-mode .btn {
+            background-color: var(--light-card);
+            color: var(--light-text);
+        }
 
-    .btn.lang {
-      background: var(--accent-color);
-      color: white;
-    }
+        .btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-    .btn.dark {
-      background: #4a5568;
-      color: white;
-    }
+        /* メインコンテンツ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    /* メインコンテンツ */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 100px 20px 80px;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+        }
 
-    .page-title {
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-      padding-bottom: 15px;
-      font-size: 2.2rem;
-      color: var(--primary-color);
-    }
+        .spot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
 
-    .page-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 5px;
-      background: var(--secondary-color);
-      border-radius: 2px;
-    }
+        .spot-card {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
 
-    /* リストスタイル */
-    .attractions-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
+        body.light-mode .spot-card {
+            background-color: var(--light-card);
+        }
 
-    .attraction-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
+        .spot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-    .attraction-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-    }
+        .spot-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
 
-    .card-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-bottom: 4px solid var(--secondary-color);
-    }
+        .spot-info {
+            padding: 20px;
+        }
 
-    .card-content {
-      padding: 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
+        .spot-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
 
-    .card-title {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: var(--text-color);
-    }
+        .spot-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
 
-    .card-category {
-      display: inline-block;
-      background: var(--primary-color);
-      color: white;
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      margin-bottom: 15px;
-    }
+        body.light-mode .spot-location {
+            color: #666;
+        }
 
-    .card-description {
-      color: var(--text-secondary);
-      margin-bottom: 15px;
-      flex-grow: 1;
-      font-size: 0.95rem;
-    }
+        .spot-description {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
 
-    .card-link {
-      align-self: flex-start;
-      background: var(--accent-color);
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.95rem;
-    }
+        .detail-page {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
 
-    .card-link:hover {
-      background: #a84e34;
-      transform: translateY(-2px);
-    }
+        .detail-header {
+            position: relative;
+            margin-bottom: 30px;
+        }
 
-    /* 詳細ページスタイル */
-    .detail-page {
-      display: none;
-      padding: 20px;
-    }
+        .detail-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
 
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--primary-color);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      margin-bottom: 25px;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-    }
+        .detail-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            max-width: 80%;
+        }
 
-    .back-button:hover {
-      background: #081e36;
-      transform: translateY(-2px);
-    }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
 
-    .detail-container {
-      background: var(--card-bg);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
 
-    .detail-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
+        @media (min-width: 768px) {
+            .detail-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-    .detail-content {
-      padding: 30px;
-    }
+        .detail-section {
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
 
-    .detail-title {
-      font-size: 2.3rem;
-      margin-bottom: 15px;
-      color: var(--text-color);
-    }
+        body.light-mode .detail-section {
+            background-color: var(--light-card);
+        }
 
-    .detail-category {
-      background: var(--primary-color);
-      color: white;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+        }
 
-    .detail-text {
-      margin-bottom: 25px;
-      color: var(--text-color);
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
+        .official-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
 
-    .transport-section {
-      background: rgba(196, 94, 63, 0.1);
-      border-radius: 10px;
-      padding: 25px;
-      margin: 30px 0;
-    }
+        .official-link:hover {
+            background-color: #c62828;
+            transform: translateY(-2px);
+        }
 
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent-color);
-      margin-bottom: 20px;
-      font-size: 1.4rem;
-    }
+        /* フッター */
+        footer {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
 
-    .section-title svg {
-      width: 28px;
-      height: 28px;
-      fill: currentColor;
-    }
+        body.light-mode footer {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #666;
+        }
 
-    .transport-info {
-      color: var(--text-color);
-      margin-bottom: 18px;
-      font-size: 1.05rem;
-    }
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-top: 5px;
+            display: block;
+        }
 
-    .official-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-color);
-      color: white;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      margin-top: 15px;
-      font-size: 1.1rem;
-    }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
 
-    .official-link:hover {
-      background: #a84e34;
-      transform: translateY(-2px);
-    }
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    /* フッター */
-    footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--footer-bg);
-      backdrop-filter: blur(10px);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 1rem;
-      z-index: 1000;
-      transition: var(--transition);
-    }
+        /* 言語選択のスタイル */
+        .lang-selector {
+            display: flex;
+            gap: 5px;
+        }
 
-    .contact-link {
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      font-size: 1.05rem;
-    }
+        .lang-btn {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
 
-    .contact-link:hover {
-      color: #e5c158;
-      text-decoration: underline;
-    }
 
-    /* レスポンシブ対応 */
-    @media (max-width: 768px) {
-      .attractions-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .logo h1 {
-        font-size: 1.5rem;
-      }
-      
-      .btn {
-        padding: 7px 14px;
-        font-size: 0.95rem;
-      }
-      
-      .detail-image {
-        height: 300px;
-      }
-      
-      .detail-content {
-        padding: 20px;
-      }
-      
-      .detail-title {
-        font-size: 1.9rem;
-      }
-
-      .page-title {
-        font-size: 1.9rem;
-      }
-
-      main {
-        padding: 90px 20px 70px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .logo h1 {
-        font-size: 1.3rem;
-      }
-      
-      .controls {
-        flex-direction: column;
-        gap: 8px;
-      }
-      
-      .logo {
-        flex-direction: column;
-        gap: 5px;
-      }
-      
-      .btn {
-        font-size: 0.9rem;
-      }
-      
-      .page-title {
-        font-size: 1.7rem;
-      }
-      
-      .detail-title {
-        font-size: 1.7rem;
-      }
-
-      main {
-        padding: 110px 15px 70px;
-      }
-
-      .detail-image {
-        height: 250px;
-      }
-    }
-  </style>
-</head>
-<body class="dark-mode">
-  <header>
-    <div class="logo">
-      <div class="logo-icon">VCE</div>
-      <h1>Venice Travel Guide</h1>
-    </div>
-    <div class="controls">
-      <button id="langBtn" class="btn lang">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/>
-          <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/>
-        </svg>
-        English
-      </button>
-      <button id="themeBtn" class="btn dark">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-        </svg>
-        Light Mode
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- メインページ -->
-    <div id="mainPage">
-      <h2 class="page-title">Venice's Top Attractions</h2>
-      <div class="attractions-list" id="attractionsList">
-        <!-- リストはJavaScriptで生成 -->
-      </div>
-    </div>
-
-    <!-- 詳細ページ -->
-    <div id="detailPage" class="detail-page">
-      <button class="back-button" id="backButton">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-        Back to List
-      </button>
-      <div class="detail-container">
-        <img id="detailImg" class="detail-image" src="" alt="">
-        <div class="detail-content">
-          <div class="detail-category" id="detailCategory"></div>
-          <h2 class="detail-title" id="detailTitle"></h2>
-          <p class="detail-text" id="detailDescription"></p>
-          
-          <div class="transport-section">
-            <h3 class="section-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-              </svg>
-              Transportation
-            </h3>
-            <p class="transport-info"><strong>From Airport:</strong> <span id="airportTransport"></span></p>
-            <p class="transport-info"><strong>Within City:</strong> <span id="cityTransport"></span></p>
-          </div>
-          
-          <a id="officialLink" class="official-link" href="#" target="_blank">
-            Visit Official Website
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
-              <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>Contact us <br> <a href="mailto:mementomorikatsu@gmail.com" class="contact-link">mementomorikatsu@gmail.com</a></p>
-  </footer>
-
-<script 
-  src="https://www.paypal.com/sdk/js?client-id=BAA0suVAzcTFoJgRUMmayNk7_ZdiVzOf-FAcRGFkBOfbIrrZHRPCVk08izlnAVYXfOv1t80zabAbgIOBCs&components=hosted-buttons&disable-funding=venmo&currency=USD">
-</script>
-
-<div id="paypal-container-MFVPZZDFUTKEN"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "MFVPZZDFUTKEN",
-  }).render("#paypal-container-MFVPZZDFUTKEN")
-</script>
+/* 修正箇所3: モバイル表示時の調整 */
+@media (max-width: 768px) {
+  body {
+    padding-top: 110px; /* モバイルではさらに余裕を持たせる */
+  }
   
-  <script>
-    // 観光名所データ（英語とイタリア語）
-    const attractionsData = {
-      en: [
-        {
-          id: "st-marks-square",
-          name: "St. Mark's Square",
-          category: "Major Squares & Architecture",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjgbVANkwu1goxUz6Nc_e5VUYS1A6Oy9fVm1C3UGeVo53Db7B3BbhfwiY&s=10",
-          description: "The principal public square of Venice, dominated by the majestic St. Mark's Basilica and the Doge's Palace.",
-          airportTransport: "Alilaguna water bus from Marco Polo Airport to St. Mark's (approx 1 hour)",
-          cityTransport: "Vaporetto lines: 1, 2, 5.1, 5.2 to Vallaresso or San Zaccaria stops",
-          officialLink: "https://www.introducingvenice.com/piazza-san-marco"
-        },
-        {
-          id: "st-marks-basilica",
-          name: "St. Mark's Basilica",
-          category: "Major Squares & Architecture",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf3MS07Ek-NLdSGZECe-dHcOrhb7ROpw2ttR4j3GXezpQIvrKjsMdPsxBS&s=10",
-          description: "A stunning cathedral known for its opulent design, gilded mosaics, and status as a symbol of Venetian wealth and power.",
-          airportTransport: "Alilaguna water bus to St. Mark's",
-          cityTransport: "Vaporetto lines: 1, 2, 5.1, 5.2 to San Zaccaria",
-          officialLink: "https://www.basilicasanmarco.it/"
-        },
-        {
-          id: "doges-palace",
-          name: "Doge's Palace",
-          category: "Major Squares & Architecture",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwlfPkMyefVlA-szxKaAKavtPqXS8SLwilf4NihOom1Bty80JI_thWcKse&s=10",
-          description: "A masterpiece of Gothic architecture, this palace was the residence of the Doge of Venice and housed political institutions.",
-          airportTransport: "Alilaguna water bus to St. Mark's",
-          cityTransport: "Vaporetto lines: 1, 2, 5.1, 5.2 to San Zaccaria",
-          officialLink: "https://palazzoducale.visitmuve.it/"
-        },
-        {
-          id: "bridge-of-sighs",
-          name: "Bridge of Sighs",
-          category: "Bridges & Canals",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr81dJobHWail6MOuU7YvUYgVepaGyMzu84abfnyGsdZXtEFva4_30wad5&s=10",
-          description: "This enclosed bridge made of white limestone passes over the Rio di Palazzo and connects the Doge's Palace to the prison.",
-          airportTransport: "Alilaguna water bus to St. Mark's",
-          cityTransport: "Vaporetto lines: 1, 2 to San Marco or San Zaccaria",
-          officialLink: "https://palazzoducale.visitmuve.it/"
-        },
-        {
-          id: "rialto-bridge",
-          name: "Rialto Bridge",
-          category: "Bridges & Canals",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5A19xnUIt8fzAiEaYaPHUHP35KJfql0GAjUm02FTkZoGejv1C6NXuEFc&s=10",
-          description: "The oldest of the four bridges spanning the Grand Canal, famous for its design and the surrounding market area.",
-          airportTransport: "Alilaguna to Rialto (Linea Blu) or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto lines: 1, 2 to Rialto stop",
-          officialLink: "https://www.veneziaunica.it/"
-        },
-        {
-          id: "grand-canal",
-          name: "Grand Canal",
-          category: "Bridges & Canals",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY0ieQ9eikdo0W5NKw5KChvFrf6m4v_5J6PPHYmcFg2_Gzb__fvdKYT-0&s=10",
-          description: "The major water-traffic corridor winding through Venice, lined with palaces, churches, and historic buildings.",
-          airportTransport: "Alilaguna water bus to various stops along the canal",
-          cityTransport: "Vaporetto Line 1 runs the full length of the Grand Canal",
-          officialLink: "https://www.actv.it/"
-        },
-        {
-          id: "ca-rezzonico",
-          name: "Ca' Rezzonico",
-          category: "Museums & Art",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEszjq84STGqqcyY1OcK-Mco8OR5gK1KfwLYJE6kDhXjMRTSQWc7IcGQ0&s=10",
-          description: "A magnificent palace on the Grand Canal housing the Museum of 18th-Century Venice with period furnishings and art.",
-          airportTransport: "Alilaguna to San Tomà or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto line 1 to Ca' Rezzonico stop",
-          officialLink: "https://carezzonico.visitmuve.it/"
-        },
-        {
-          id: "accademia",
-          name: "Gallerie dell'Accademia",
-          category: "Museums & Art",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMACqCwPQY9mgz0Y2qd90TFlYS0oXwO_uIjbi5WM3cqMu-XptNXQtKNpk&s=10",
-          description: "Houses the largest collection of Venetian paintings from the 14th to 18th centuries, including works by Bellini, Titian, and Veronese.",
-          airportTransport: "Alilaguna to Accademia or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto lines: 1, 2 to Accademia stop",
-          officialLink: "https://www.gallerieaccademia.it/"
-        },
-        {
-          id: "guggenheim",
-          name: "Peggy Guggenheim Collection",
-          category: "Museums & Art",
-          image: "https://upload.wikimedia.org/wikipedia/commons/9/97/PI5DAE~2_-_CopyPeggy_Guggenheim_Museum.JPG",
-          description: "One of Europe's premier museums for European and American modern art of the first half of the 20th century.",
-          airportTransport: "Alilaguna to Accademia or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto lines: 1, 2 to Accademia stop (5 min walk)",
-          officialLink: "https://www.guggenheim-venice.it/"
-        },
-        {
-          id: "bovolo",
-          name: "Scala Contarini del Bovolo",
-          category: "Architectural Gems",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxfxGiFuPGCzve96WCtohZzCMtixLXDcTx-BOIgNx_qB9hGxg-g60LCA&s=10",
-          description: "A unique spiral staircase tower hidden in a small courtyard, a masterpiece of Venetian Renaissance architecture.",
-          airportTransport: "Alilaguna to Rialto or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto lines: 1 to Rialto stop (5 min walk)",
-          officialLink: "https://www.scalacontarinidelbovolo.com/"
-        },
-        {
-          id: "santa-margherita",
-          name: "Campo Santa Margherita",
-          category: "Local Life",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BDSgcX_JAAl45HpVoJUFJdl5qWyCHCk9mgn20fnPAvmeybjnwbmM6as&s=10",
-          description: "A lively square in the Dorsoduro district, popular with students and locals for its cafes, bars, and market stalls.",
-          airportTransport: "Alilaguna to Zattere or take vaporetto from Piazzale Roma",
-          cityTransport: "Vaporetto lines: 1, 2 to Ca' Rezzonico or San Tomà stops",
-          officialLink: "https://www.veneziaunica.it/"
-        },
-        {
-          id: "burano-murano",
-          name: "Burano & Murano Islands",
-          category: "Venetian Islands",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOigb6WK_rGdDbrgkUpLm0JuVC8y1aDyP79p2r9hTc6yo06_0H8OYEmkw&s=10",
-          description: "Burano is famous for its brightly colored fishermen's houses and lace-making, while Murano is renowned for its glassmaking tradition.",
-          airportTransport: "Alilaguna directly to Murano or take vaporetto from Fondamente Nove",
-          cityTransport: "Vaporetto lines: 12 to Burano, 3 or 4.1 to Murano from Fondamente Nove",
-          officialLink: "https://www.veneziaunica.it/"
-        }
-      ],
-      it: [
-        {
-          id: "st-marks-square",
-          name: "Piazza San Marco",
-          category: "Piazze Principali e Architettura",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjgbVANkwu1goxUz6Nc_e5VUYS1A6Oy9fVm1C3UGeVo53Db7B3BbhfwiY&s=10",
-          description: "La piazza principale di Venezia, dominata dalla maestosa Basilica di San Marco e dal Palazzo Ducale.",
-          airportTransport: "Alilaguna da Marco Polo a San Marco (circa 1 ora)",
-          cityTransport: "Vaporetto linee: 1, 2, 5.1, 5.2 a Vallaresso o San Zaccaria",
-          officialLink: "https://www.basilicasanmarco.it/"
-        },
-        {
-          id: "st-marks-basilica",
-          name: "Basilica di San Marco",
-          category: "Piazze Principali e Architettura",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf3MS07Ek-NLdSGZECe-dHcOrhb7ROpw2ttR4j3GXezpQIvrKjsMdPsxBS&s=10",
-          description: "Una splendida cattedrale nota per il suo design opulento, i mosaici dorati e lo status di simbolo della ricchezza e del potere veneziano.",
-          airportTransport: "Alilaguna a San Marco",
-          cityTransport: "Vaporetto linee: 1, 2, 5.1, 5.2 a San Zaccaria",
-          officialLink: "https://www.basilicasanmarco.it/"
-        },
-        {
-          id: "doges-palace",
-          name: "Palazzo Ducale",
-          category: "Piazze Principali e Architettura",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwlfPkMyefVlA-szxKaAKavtPqXS8SLwilf4NihOom1Bty80JI_thWcKse&s=10",
-          description: "Capolavoro dell'architettura gotica, questo palazzo era la residenza del Doge di Venezia e ospitava le istituzioni politiche.",
-          airportTransport: "Alilaguna a San Marco",
-          cityTransport: "Vaporetto linee: 1, 2, 5.1, 5.2 a San Zaccaria",
-          officialLink: "https://palazzoducale.visitmuve.it/"
-        },
-        {
-          id: "bridge-of-sighs",
-          name: "Ponte dei Sospiri",
-          category: "Ponti e Canali",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr81dJobHWail6MOuU7YvUYgVepaGyMzu84abfnyGsdZXtEFva4_30wad5&s=10",
-          description: "Questo ponte coperto in pietra calcarea bianca passa sul Rio di Palazzo e collega Palazzo Ducale alle prigioni.",
-          airportTransport: "Alilaguna a San Marco",
-          cityTransport: "Vaporetto linee: 1, 2 a San Marco o San Zaccaria",
-          officialLink: "https://palazzoducale.visitmuve.it/"
-        },
-        {
-          id: "rialto-bridge",
-          name: "Ponte di Rialto",
-          category: "Ponti e Canali",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5A19xnUIt8fzAiEaYaPHUHP35KJfql0GAjUm02FTkZoGejv1C6NXuEFc&s=10",
-          description: "Il più antico dei quattro ponti che attraversano il Canal Grande, famoso per il suo design e l'area del mercato circostante.",
-          airportTransport: "Alilaguna a Rialto (Linea Blu) o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linee: 1, 2 a fermata Rialto",
-          officialLink: "https://www.veneziaunica.it/"
-        },
-        {
-          id: "grand-canal",
-          name: "Canal Grande",
-          category: "Ponti e Canali",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY0ieQ9eikdo0W5NKw5KChvFrf6m4v_5J6PPHYmcFg2_Gzb__fvdKYT-0&s=10",
-          description: "Il principale corridoio del traffico acquatico che si snoda attraverso Venezia, fiancheggiato da palazzi, chiese ed edifici storici.",
-          airportTransport: "Alilaguna a varie fermate lungo il canale",
-          cityTransport: "Vaporetto Linea 1 percorre tutta la lunghezza del Canal Grande",
-          officialLink: "https://www.actv.it/"
-        },
-        {
-          id: "ca-rezzonico",
-          name: "Ca' Rezzonico",
-          category: "Musei e Arte",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEszjq84STGqqcyY1OcK-Mco8OR5gK1KfwLYJE6kDhXjMRTSQWc7IcGQ0&s=10",
-          description: "Un magnifico palazzo sul Canal Grande che ospita il Museo del Settecento Veneziano con arredi e arte del periodo.",
-          airportTransport: "Alilaguna a San Tomà o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linea 1 a fermata Ca' Rezzonico",
-          officialLink: "https://carezzonico.visitmuve.it/"
-        },
-        {
-          id: "accademia",
-          name: "Gallerie dell'Accademia",
-          category: "Musei e Arte",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMACqCwPQY9mgz0Y2qd90TFlYS0oXwO_uIjbi5WM3cqMu-XptNXQtKNpk&s=10",
-          description: "Ospita la più grande collezione di dipinti veneziani dal XIV al XVIII secolo, inclusi opere di Bellini, Tiziano e Veronese.",
-          airportTransport: "Alilaguna a Accademia o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linee: 1, 2 a fermata Accademia",
-          officialLink: "https://www.gallerieaccademia.it/"
-        },
-        {
-          id: "guggenheim",
-          name: "Collezione Peggy Guggenheim",
-          category: "Musei e Arte",
-          image: "https://upload.wikimedia.org/wikipedia/commons/9/97/PI5DAE~2_-_CopyPeggy_Guggenheim_Museum.JPG",
-          description: "Uno dei principali musei europei per l'arte moderna europea e americana della prima metà del XX secolo.",
-          airportTransport: "Alilaguna a Accademia o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linee: 1, 2 a fermata Accademia (5 min a piedi)",
-          officialLink: "https://www.guggenheim-venice.it/"
-        },
-        {
-          id: "bovolo",
-          name: "Scala Contarini del Bovolo",
-          category: "Gioielli Architettonici",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxfxGiFuPGCzve96WCtohZzCMtixLXDcTx-BOIgNx_qB9hGxg-g60LCA&s=10",
-          description: "Una torre di scale a chiocciola unica nascosta in un piccolo cortile, capolavoro dell'architettura rinascimentale veneziana.",
-          airportTransport: "Alilaguna a Rialto o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linea 1 a fermata Rialto (5 min a piedi)",
-          officialLink: "https://www.scalacontarinidelbovolo.com/"
-        },
-        {
-          id: "santa-margherita",
-          name: "Campo Santa Margherita",
-          category: "Vita Locale",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BDSgcX_JAAl45HpVoJUFJdl5qWyCHCk9mgn20fnPAvmeybjnwbmM6as&s=10",
-          description: "Una piazza vivace nel sestiere di Dorsoduro, popolare tra studenti e locali per i suoi caffè, bar e bancarelle.",
-          airportTransport: "Alilaguna a Zattere o vaporetto da Piazzale Roma",
-          cityTransport: "Vaporetto linee: 1, 2 a fermate Ca' Rezzonico o San Tomà",
-          officialLink: "https://www.veneziaunica.it/"
-        },
-        {
-          id: "burano-murano",
-          name: "Isole di Burano e Murano",
-          category: "Isole Veneziane",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOigb6WK_rGdDbrgkUpLm0JuVC8y1aDyP79p2r9hTc6yo06_0H8OYEmkw&s=10",
-          description: "Burano è famosa per le sue case colorate dei pescatori e la lavorazione del merletto, mentre Murano è rinomata per la sua tradizione vetraria.",
-          airportTransport: "Alilaguna direttamente a Murano o vaporetto da Fondamente Nove",
-          cityTransport: "Vaporetto linea 12 a Burano, 3 o 4.1 a Murano da Fondamente Nove",
-          officialLink: "https://www.veneziaunica.it/"
-        }
-      ]
-    };
+header {
+    min-height: 90px; /* モバイルでの最小高さ確保 */
+    height: auto; /* 高さを自動調整に */
+    flex-wrap: wrap; /* 要素が折り返せるように */
+  }
+  
+  .controls {
+      width: 100%;
+      justify-content: space-between;
+  }
+  
+  .spot-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .detail-image {
+      height: 250px;
+  }
+  
+  .detail-title {
+      font-size: 1.4rem;
+      padding: 10px 15px;
+  }
+}
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">T</div>
+            <span class="app-name">Tokyo Travel Guide</span>
+        </div>
+        <div class="controls">
+            <div class="lang-selector">
+                <button class="btn lang-btn active" data-lang="en">EN</button>
+                <button class="btn lang-btn" data-lang="zh">中文</button>
+                <button class="btn lang-btn" data-lang="ja">日本語</button>
+            </div>
+            <button class="btn mode-toggle" id="modeToggle">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </div>
+    </header>
 
-    // 初期化
-    let currentLang = 'en';
-    let currentAttraction = null;
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <h1 class="main-title">Discover Tokyo's Top Attractions</h1>
+        
+        <div class="main-page" id="mainPage">
+            <div class="spot-grid">
+                <!-- スポットカードはJavaScriptで生成 -->
+            </div>
+        </div>
+        
+        <div class="detail-page" id="detailPage">
+            <!-- 詳細ページはJavaScriptで生成 -->
+        </div>
+    </div>
 
-    // DOM要素の取得
-    const mainPage = document.getElementById('mainPage');
-    const detailPage = document.getElementById('detailPage');
-    const attractionsList = document.getElementById('attractionsList');
-    const backButton = document.getElementById('backButton');
-    const langButton = document.getElementById('langBtn');
-    const themeButton = document.getElementById('themeBtn');
-    const detailImg = document.getElementById('detailImg');
-    const detailCategory = document.getElementById('detailCategory');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailDescription = document.getElementById('detailDescription');
-    const airportTransport = document.getElementById('airportTransport');
-    const cityTransport = document.getElementById('cityTransport');
-    const officialLink = document.getElementById('officialLink');
+    <!-- フッター -->
+    <footer>
+        <div>Contact us</div>
+        <a href="mailto:mementomorikatsu@gmail.com" class="contact-link">mementomorikatsu@gmail.com</a>
+    </footer>
 
-    // アトラクションリストの表示
-    function renderAttractionsList() {
-      attractionsList.innerHTML = '';
-      
-      attractionsData[currentLang].forEach(attraction => {
-        const card = document.createElement('div');
-        card.className = 'attraction-card';
-        card.innerHTML = `
-          <img src="${attraction.image}" alt="${attraction.name}" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">${attraction.name}</h3>
-            <span class="card-category">${attraction.category}</span>
-            <p class="card-description">${attraction.description.substring(0, 100)}...</p>
-            <a href="#" class="card-link" data-id="${attraction.id}">
-              ${currentLang === 'en' ? 'View Details' : 'Vedi Dettagli'}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </a>
-          </div>
-        `;
-        attractionsList.appendChild(card);
-      });
-      
-      // 詳細ページへのリンクイベント
-      document.querySelectorAll('.card-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const id = link.getAttribute('data-id');
-          showAttractionDetail(id);
+    <script>
+        // 観光地データ
+        const spots = [
+            {
+                id: 1,
+                name: {
+                    en: "Asakusa & Tokyo Skytree",
+                    zh: "浅草＆东京晴空塔",
+                    ja: "浅草・東京スカイツリー"
+                },
+                description: {
+                    en: "Experience traditional Japanese culture at Senso-ji Temple and enjoy panoramic views of Tokyo from the iconic Tokyo Skytree.",
+                    zh: "在浅草寺体验日本传统文化，并从标志性的东京晴空塔欣赏东京全景。",
+                    ja: "浅草寺で日本の伝統文化を体験し、東京スカイツリーから東京のパノラマを楽しめます。"
+                },
+                location: {
+                    en: "Asakusa, Taito City",
+                    zh: "台东区浅草",
+                    ja: "台東区浅草"
+                },
+                access: {
+                    en: "5-minute walk from Asakusa Station (Tokyo Metro Ginza Line)",
+                    zh: "从浅草站（东京地铁银座线）步行5分钟",
+                    ja: "東京メトロ銀座線浅草駅から徒歩5分"
+                },
+                nearby: {
+                    en: "Nakamise Shopping Street, Sumida River",
+                    zh: "仲见世商业街、隅田川",
+                    ja: "仲見世商店街、隅田川"
+                },
+                official: "https://www.tokyo-skytree.jp/en/",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwWZUQohxpYoX6fA5rMoiFQIqAy0WYPQqla1GBWi9V7ReI7ZEttlJOfPo&s=10"
+            },
+            {
+                id: 2,
+                name: {
+                    en: "Ueno Area",
+                    zh: "上野地区",
+                    ja: "上野エリア"
+                },
+                description: {
+                    en: "Explore Ueno Park with its museums, zoo, and beautiful cherry blossoms in spring.",
+                    zh: "探索上野公园的博物馆、动物园和春季美丽的樱花。",
+                    ja: "博物館、動物園、春の美しい桜が楽しめる上野公園を探索しましょう。"
+                },
+                location: {
+                    en: "Ueno, Taito City",
+                    zh: "台东区上野",
+                    ja: "台東区上野"
+                },
+                access: {
+                    en: "Direct access from JR Ueno Station",
+                    zh: "从JR上野站直达",
+                    ja: "JR上野駅直結"
+                },
+                nearby: {
+                    en: "Ueno Zoo, Tokyo National Museum",
+                    zh: "上野动物园、东京国立博物馆",
+                    ja: "上野動物園、東京国立博物館"
+                },
+                official: "https://www.ueno.or.jp/en/",
+                image: "ueno_park"
+            },
+            {
+                id: 3,
+                name: {
+                    en: "Shibuya & Harajuku",
+                    zh: "涩谷＆原宿",
+                    ja: "渋谷・原宿"
+                },
+                description: {
+                    en: "Visit the famous Shibuya Crossing, experience youth culture in Harajuku, and enjoy shopping and dining.",
+                    zh: "参观著名的涩谷十字路口，在原宿体验青年文化，享受购物和美食。",
+                    ja: "有名な渋谷スクランブル交差点を訪れ、原宿で若者文化を体験し、ショッピングや食事を楽しめます。"
+                },
+                location: {
+                    en: "Shibuya City",
+                    zh: "涩谷区",
+                    ja: "渋谷区"
+                },
+                access: {
+                    en: "Direct access from JR Shibuya Station and JR Harajuku Station",
+                    zh: "从JR涩谷站和JR原宿站直达",
+                    ja: "JR渋谷駅、JR原宿駅直結"
+                },
+                nearby: {
+                    en: "Meiji Shrine, Yoyogi Park",
+                    zh: "明治神宫、代代木公园",
+                    ja: "明治神宮、代々木公園"
+                },
+                official: "https://www.shibuya-scramble-square.com/en/",
+                image: "shibuya_crossing"
+            },
+            {
+                id: 4,
+                name: {
+                    en: "Ginza & Marunouchi",
+                    zh: "银座＆丸之内",
+                    ja: "銀座・丸の内"
+                },
+                description: {
+                    en: "Tokyo's premier shopping and business district with luxury boutiques, department stores, and gourmet restaurants.",
+                    zh: "东京首屈一指的购物和商业区，拥有豪华精品店、百货商店和美食餐厅。",
+                    ja: "高級ブティック、デパート、グルメレストランが集まる東京随一のショッピング・ビジネス地区です。"
+                },
+                location: {
+                    en: "Chuo City",
+                    zh: "中央区",
+                    ja: "中央区"
+                },
+                access: {
+                    en: "Direct access from JR Tokyo Station",
+                    zh: "从JR东京站直达",
+                    ja: "JR東京駅直結"
+                },
+                nearby: {
+                    en: "Imperial Palace, Hibiya Park",
+                    zh: "皇居、日比谷公园",
+                    ja: "皇居、日比谷公園"
+                },
+                official: "https://ginza.jp/en/",
+                image: "ginza_tokyo"
+            },
+            {
+                id: 5,
+                name: {
+                    en: "Tokyo Disney Resort",
+                    zh: "东京迪士尼度假区",
+                    ja: "東京ディズニーリゾート"
+                },
+                description: {
+                    en: "Experience the magic of Disney with two theme parks: Tokyo Disneyland and Tokyo DisneySea.",
+                    zh: "在两个主题公园体验迪士尼的魔力：东京迪士尼乐园和东京迪士尼海洋。",
+                    ja: "東京ディズニーランドと東京ディズニーシーの2つのテーマパークでディズニーの魔法を体験しましょう。"
+                },
+                location: {
+                    en: "Urayasu, Chiba",
+                    zh: "千叶县浦安市",
+                    ja: "千葉県浦安市"
+                },
+                access: {
+                    en: "5-minute walk from JR Maihama Station",
+                    zh: "从JR舞滨站步行5分钟",
+                    ja: "JR舞浜駅から徒歩5分"
+                },
+                nearby: {
+                    en: "Ikspiari Shopping Mall",
+                    zh: "伊克斯皮儿莉购物中心",
+                    ja: "イクスピアリ"
+                },
+                official: "https://www.tokyodisneyresort.jp/en/",
+                image: "tokyo_disney"
+            },
+            {
+                id: 6,
+                name: {
+                    en: "Nikko",
+                    zh: "日光",
+                    ja: "日光"
+                },
+                description: {
+                    en: "A UNESCO World Heritage site famous for Toshogu Shrine and beautiful natural scenery.",
+                    zh: "联合国教科文组织世界遗产，以日光东照宫和美丽的自然风光而闻名。",
+                    ja: "日光東照宮と美しい自然景観で有名なユネスコ世界遺産です。"
+                },
+                location: {
+                    en: "Nikko, Tochigi",
+                    zh: "栃木县日光市",
+                    ja: "栃木県日光市"
+                },
+                access: {
+                    en: "2 hours from Tokyo by train",
+                    zh: "从东京乘火车2小时",
+                    ja: "東京から電車で2時間"
+                },
+                nearby: {
+                    en: "Lake Chuzenji, Kegon Falls",
+                    zh: "中禅寺湖、华严瀑布",
+                    ja: "中禅寺湖、華厳の滝"
+                },
+                official: "https://www.visitnikko.jp/en/",
+                image: "nikko_toshogu"
+            },
+            {
+                id: 7,
+                name: {
+                    en: "Mount Takao",
+                    zh: "高尾山",
+                    ja: "高尾山"
+                },
+                description: {
+                    en: "A popular hiking destination with scenic trails, a temple, and panoramic views of Tokyo.",
+                    zh: "一个受欢迎的徒步旅行目的地，拥有风景优美的小径、寺庙和东京的全景。",
+                    ja: "景観の良いハイキングコース、お寺、東京のパノラマビューが楽しめる人気のハイキングスポットです。"
+                },
+                location: {
+                    en: "Hachioji, Tokyo",
+                    zh: "东京都八王子市",
+                    ja: "東京都八王子市"
+                },
+                access: {
+                    en: "1 hour from Shinjuku by train",
+                    zh: "从新宿乘火车1小时",
+                    ja: "新宿から電車で1時間"
+                },
+                nearby: {
+                    en: "Takao 599 Museum",
+                    zh: "高尾599博物馆",
+                    ja: "高尾599ミュージアム"
+                },
+                official: "https://www.takaotozan.co.jp/foreign/en/",
+                image: "mount_takao"
+            },
+            {
+                id: 8,
+                name: {
+                    en: "Shinjuku",
+                    zh: "新宿",
+                    ja: "新宿"
+                },
+                description: {
+                    en: "Tokyo's bustling commercial and entertainment center with skyscrapers, shopping, and nightlife.",
+                    zh: "东京繁华的商业和娱乐中心，拥有摩天大楼、购物和夜生活。",
+                    ja: "超高層ビル、ショッピング、ナイトライフが楽しめる東京の賑やかな商業・娯楽センターです。"
+                },
+                location: {
+                    en: "Shinjuku City",
+                    zh: "新宿区",
+                    ja: "新宿区"
+                },
+                access: {
+                    en: "Direct access from JR Shinjuku Station",
+                    zh: "从JR新宿站直达",
+                    ja: "JR新宿駅直結"
+                },
+                nearby: {
+                    en: "Shinjuku Gyoen Garden, Kabukicho",
+                    zh: "新宿御苑、歌舞伎町",
+                    ja: "新宿御苑、歌舞伎町"
+                },
+                official: "https://www.gotokyo.org/en/spot/15/index.html",
+                image: "shinjuku_tokyo"
+            },
+            {
+                id: 9,
+                name: {
+                    en: "Ghibli Museum",
+                    zh: "吉卜力美术馆",
+                    ja: "三鷹の森ジブリ美術館"
+                },
+                description: {
+                    en: "A museum dedicated to the works of Studio Ghibli, featuring original animations and exhibits.",
+                    zh: "致力于吉卜力工作室作品的博物馆，展示原创动画和展品。",
+                    ja: "スタジオジブリの作品に特化した博物館で、オリジナルアニメーションや展示品を紹介しています。"
+                },
+                location: {
+                    en: "Mitaka, Tokyo",
+                    zh: "东京都三鹰市",
+                    ja: "東京都三鷹市"
+                },
+                access: {
+                    en: "15 minutes from Shinjuku by train",
+                    zh: "从新宿乘火车15分钟",
+                    ja: "新宿から電車で15分"
+                },
+                nearby: {
+                    en: "Inokashira Park",
+                    zh: "井之头公园",
+                    ja: "井の頭公園"
+                },
+                official: "http://www.ghibli-museum.jp/en/",
+                image: "ghibli_museum"
+            },
+            {
+                id: 10,
+                name: {
+                    en: "Okutama",
+                    zh: "奥多摩",
+                    ja: "奥多摩"
+                },
+                description: {
+                    en: "A natural retreat with mountains, lakes, and hiking trails located in western Tokyo.",
+                    zh: "位于东京西部的自然度假胜地，拥有山脉、湖泊和徒步小径。",
+                    ja: "東京西部に位置する山、湖、ハイキングコースがある自然のリトリート地です。"
+                },
+                location: {
+                    en: "Okutama, Tokyo",
+                    zh: "东京都奥多摩町",
+                    ja: "東京都奥多摩町"
+                },
+                access: {
+                    en: "2 hours from Shinjuku by train",
+                    zh: "从新宿乘火车2小时",
+                    ja: "新宿から電車で2時間"
+                },
+                nearby: {
+                    en: "Okutama Lake, Hikawa Valley",
+                    zh: "奥多摩湖、氷川溪谷",
+                    ja: "奥多摩湖、氷川渓谷"
+                },
+                official: "https://www.okutama-kanko.jp/en/",
+                image: "okutama_lake"
+            },
+            {
+                id: 11,
+                name: {
+                    en: "Hakone",
+                    zh: "箱根",
+                    ja: "箱根"
+                },
+                description: {
+                    en: "A famous hot spring resort area with views of Mount Fuji, lakes, and art museums.",
+                    zh: "著名的温泉度假区，拥有富士山景观、湖泊和美术馆。",
+                    ja: "富士山の景色、湖、美術館が楽しめる有名な温泉リゾートエリアです。"
+                },
+                location: {
+                    en: "Hakone, Kanagawa",
+                    zh: "神奈川县箱根町",
+                    ja: "神奈川県箱根町"
+                },
+                access: {
+                    en: "1.5 hours from Shinjuku by train",
+                    zh: "从新宿乘火车1.5小时",
+                    ja: "新宿から電車で1.5時間"
+                },
+                nearby: {
+                    en: "Lake Ashi, Hakone Shrine",
+                    zh: "芦之湖、箱根神社",
+                    ja: "芦ノ湖、箱根神社"
+                },
+                official: "https://www.hakone.or.jp/en/",
+                image: "hakone"
+            },
+            {
+                id: 12,
+                name: {
+                    en: "Kamakura & Enoshima",
+                    zh: "镰仓＆江之岛",
+                    ja: "鎌倉・江ノ島"
+                },
+                description: {
+                    en: "Historic coastal town with temples, shrines, and a beautiful island connected by bridge.",
+                    zh: "历史悠久的海滨小镇，拥有寺庙、神社和一座通过桥梁连接的美丽岛屿。",
+                    ja: "寺院、神社、橋でつながった美しい島がある歴史的な海岸の町です。"
+                },
+                location: {
+                    en: "Kamakura, Kanagawa",
+                    zh: "神奈川县镰仓市",
+                    ja: "神奈川県鎌倉市"
+                },
+                access: {
+                    en: "1 hour from Tokyo by train",
+                    zh: "从东京乘火车1小时",
+                    ja: "東京から電車で1時間"
+                },
+                nearby: {
+                    en: "Great Buddha of Kamakura, Enoshima Shrine",
+                    zh: "镰仓大佛、江岛神社",
+                    ja: "鎌倉大仏、江島神社"
+                },
+                official: "https://www.enoshima-seacandle.com/en/",
+                image: "kamakura"
+            }
+        ];
+
+        // 初期設定
+        let currentLanguage = 'en';
+        let darkMode = true;
+        let currentSpotId = null;
+
+        // DOM要素
+        const mainPage = document.getElementById('mainPage');
+        const detailPage = document.getElementById('detailPage');
+        const spotGrid = document.querySelector('.spot-grid');
+        const appName = document.querySelector('.app-name');
+        const mainTitle = document.querySelector('.main-title');
+        const modeToggle = document.getElementById('modeToggle');
+        const modeIcon = document.querySelector('.mode-icon');
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 設定の読み込み
+            loadSettings();
+            // スポットの表示
+            renderSpots();
+            // イベントリスナーの設定
+            setupEventListeners();
         });
-      });
-    }
 
-    // 詳細ページの表示
-    function showAttractionDetail(id) {
-      const attraction = attractionsData[currentLang].find(a => a.id === id);
-      if (!attraction) return;
-      
-      currentAttraction = attraction;
-      
-      detailImg.src = attraction.image;
-      detailImg.alt = attraction.name;
-      detailCategory.textContent = attraction.category;
-      detailTitle.textContent = attraction.name;
-      detailDescription.textContent = attraction.description;
-      airportTransport.textContent = attraction.airportTransport;
-      cityTransport.textContent = attraction.cityTransport;
-      officialLink.href = attraction.officialLink;
-      
-      mainPage.style.display = 'none';
-      detailPage.style.display = 'block';
-      
-      // ページトップにスクロール
-      window.scrollTo(0, 0);
-    }
+        // 設定の読み込み
+        function loadSettings() {
+            // 言語設定
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage) {
+                currentLanguage = savedLanguage;
+                updateLanguageButtons();
+            }
+            
+            // ダークモード設定
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode !== null) {
+                darkMode = savedMode === 'true';
+                updateMode();
+            }
+        }
 
-    // メインページに戻る
-    function goBackToList() {
-      mainPage.style.display = 'block';
-      detailPage.style.display = 'none';
-      currentAttraction = null;
-      
-      // ページトップにスクロール
-      window.scrollTo(0, 0);
-    }
+        // 言語ボタンの更新
+        function updateLanguageButtons() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === currentLanguage) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // テキストの更新
+            updateTexts();
+        }
 
-    // 言語切り替え
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'it' : 'en';
-      langButton.textContent = currentLang === 'en' ? 'English' : 'Italiano';
-      
-      // ページタイトル更新
-      document.querySelector('.page-title').textContent = 
-        currentLang === 'en' ? "Venice's Top Attractions" : "Principali Attrazioni di Venezia";
-      
-      // バックボタンテキスト更新
-      backButton.innerHTML = currentLang === 'en' ? 
-        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-        Back to List` : 
-        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-        Torna all'elenco`;
-      
-      if (currentAttraction) {
-        showAttractionDetail(currentAttraction.id);
-      } else {
-        renderAttractionsList();
-      }
-    }
+        // テキストの更新
+        function updateTexts() {
+            // アプリ名
+            appName.textContent = currentLanguage === 'en' ? 'Tokyo Travel Guide' : 
+                                currentLanguage === 'zh' ? '东京旅游指南' : '東京観光ガイド';
+            
+            // メインタイトル
+            mainTitle.textContent = currentLanguage === 'en' ? 'Discover Tokyo\'s Top Attractions' : 
+                                currentLanguage === 'zh' ? '探索东京热门景点' : '東京の人気観光スポットを発見';
+            
+            // スポットの再表示
+            renderSpots();
+            
+            // 詳細ページが表示されている場合は再表示
+            if (currentSpotId !== null) {
+                renderSpotDetail(currentSpotId);
+            }
+        }
 
-    // テーマ切り替え
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      themeButton.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
-    }
+        // モードの更新
+        function updateMode() {
+            if (darkMode) {
+                document.body.classList.remove('light-mode');
+                modeIcon.textContent = '🌙';
+            } else {
+                document.body.classList.add('light-mode');
+                modeIcon.textContent = '☀️';
+            }
+        }
 
-    // イベントリスナーの設定
-    backButton.addEventListener('click', goBackToList);
-    langButton.addEventListener('click', toggleLanguage);
-    themeButton.addEventListener('click', toggleTheme);
+        // スポットの表示
+        function renderSpots() {
+            spotGrid.innerHTML = '';
+            
+            spots.forEach(spot => {
+                const card = document.createElement('div');
+                card.className = 'spot-card';
+                card.dataset.id = spot.id;
+                
+                // 画像URLの生成を修正
+                const imageUrl = `https://source.unsplash.com/random/600x400/?${spot.image},japan`;
+                
+                card.innerHTML = `
+                    <img src="${imageUrl}" alt="${spot.name.en}" class="spot-image">
+                    <div class="spot-info">
+                        <h2 class="spot-name">${spot.name[currentLanguage]}</h2>
+                        <div class="spot-location">
+                            📍 ${spot.location[currentLanguage]}
+                        </div>
+                        <p class="spot-description">${spot.description[currentLanguage]}</p>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => showSpotDetail(spot.id));
+                spotGrid.appendChild(card);
+            });
+        }
 
-    // PWA Service Workerの登録
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then(registration => {
-            console.log('ServiceWorker registered:', registration);
-          })
-          .catch(error => {
-            console.log('ServiceWorker registration failed:', error);
-          });
-      });
-    }
+        // 詳細ページの表示
+        function showSpotDetail(id) {
+            currentSpotId = id;
+            mainPage.style.display = 'none';
+            detailPage.style.display = 'block';
+            renderSpotDetail(id);
+        }
 
-    // 初期表示
-    renderAttractionsList();
-  </script>
+        // 詳細ページのレンダリング
+        function renderSpotDetail(id) {
+            const spot = spots.find(s => s.id === id);
+            
+            // 詳細画像URLの生成を修正
+            const detailImageUrl = `https://source.unsplash.com/random/1200x600/?${spot.image},japan`;
+            
+            detailPage.innerHTML = `
+                <div class="detail-header">
+                    <img src="${detailImageUrl}" alt="${spot.name.en}" class="detail-image">
+                    <button class="back-btn" id="backBtn">← ${currentLanguage === 'en' ? 'Back' : currentLanguage === 'zh' ? '返回' : '戻る'}</button>
+                    <h2 class="detail-title">${spot.name[currentLanguage]}</h2>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h3 class="section-title">${currentLanguage === 'en' ? 'Description' : currentLanguage === 'zh' ? '描述' : '説明'}</h3>
+                        <p>${spot.description[currentLanguage]}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h3 class="section-title">${currentLanguage === 'en' ? 'Access' : currentLanguage === 'zh' ? '交通' : 'アクセス'}</h3>
+                        <p>${spot.access[currentLanguage]}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h3 class="section-title">${currentLanguage === 'en' ? 'Nearby Spots' : currentLanguage === 'zh' ? '附近景点' : '近くのスポット'}</h3>
+                        <p>${spot.nearby[currentLanguage]}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h3 class="section-title">${currentLanguage === 'en' ? 'Official Website' : currentLanguage === 'zh' ? '官方网站' : '公式サイト'}</h3>
+                        <a href="${spot.official}" target="_blank" class="official-link">
+                            ${currentLanguage === 'en' ? 'Visit Website' : currentLanguage === 'zh' ? '访问网站' : 'サイトを訪問'}
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            // 戻るボタンのイベントリスナー
+            document.getElementById('backBtn').addEventListener('click', () => {
+                detailPage.style.display = 'none';
+                mainPage.style.display = 'block';
+                currentSpotId = null;
+            });
+        }
+
+        // イベントリスナーの設定
+        function setupEventListeners() {
+            // 言語切り替え
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentLanguage = btn.dataset.lang;
+                    localStorage.setItem('language', currentLanguage);
+                    updateLanguageButtons();
+                });
+            });
+            
+            // ダーク/ライトモード切り替え
+            modeToggle.addEventListener('click', () => {
+                darkMode = !darkMode;
+                localStorage.setItem('darkMode', darkMode);
+                updateMode();
+            });
+        }
+    </script>
 </body>
 </html>
