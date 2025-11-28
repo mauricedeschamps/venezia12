@@ -1,21 +1,77 @@
 {
-  "name": "Venice Travel Guide",
-  "short_name": "Venice Guide",
-  "description": "Your ultimate guide to Venice's top attractions",
-  "start_url": "/",
+  "name": "Flemish Verbs Master",
+  "short_name": "FlemishVerbs",
+  "description": "Learn 50 Flemish verbs with audio and examples",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0a2a4a",
-  "theme_color": "#0a2a4a",
+  "theme_color": "#2c3e50",
+  "background_color": "#1a1a1a",
+  "orientation": "any",
   "icons": [
     {
-      "src": "/image/IMG_20250716_222622_(192_x_192_ピクセル).jpg",
-      "sizes": "192x192",
-      "type": "image/jpg"
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/image/IMG_20250716_222716_(512_x_512_ピクセル).jpg",
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/jpg"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "language", "utilities"],
+  "screenshots": [
+    {
+      "src": "icons/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "icons/screenshot-narrow.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
 }
